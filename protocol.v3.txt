@@ -1,0 +1,20 @@
+Client { hy:data } -(rest)-> Server (register Client) // Merging system (MAC is uniqe when MAC is not found first check for PC-Name when found merge)
+
+
+   Server { hy:enc.version:ip:port } -(rest.response)-> Client
+OR Server { hy:update } -(rest.response)-> Client [Starts update & Restarts]
+OR Server { hy:setwait } -(rest.response)-> Client
+
+
+-Server opens Socket- -Client opens Socket after sec delay-
+-Client Socket starts encryption-
+
+
+Client { hy } -(socket)-> Server sets Socket in waiting State
+
+
+REST Server jar
+Socket Provider jar -> arg {port:enc.version:expected-ip:backend-id}
+
+
+Nach der Registrierung schlägt der Client einen Port vor mit dem sich dann der Server connectet bei Commands o. ä.
